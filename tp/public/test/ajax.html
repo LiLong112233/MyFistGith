@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="ul"></ul>
+<button id="but"> ajax异步交互</button>
+<script>
+    var but=document.getElementById("but")
+    but.addEventListener('click',function () {
+        ajax()
+    })
+    function ajax() {
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState == 4&&xhr.status==200){
+                var json=xhr.responseText;
+                var arr=JSON.parse(json);
+                var ul =document.getElementById('ul');
+                arr.forEach(function (v,k){
+                    //创建接口
+                    var li=document.createElement('li');
+                    //创建DOM文本节点
+                    var content=document.createTextNode("["+v.goods_id+"]"+"商品名称："+v.goods_name)
+                    li.append(content);
+                    ul.appendChild(li)
+                })
+            }
+        }
+        xhr.open("GET","http://tp.2008.com/index.php?s=user/Index/json");
+        xhr.send();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>新闻详情页面</h1>
+
+    <table border="1">
+        <tr>
+            <td>新闻标题</td>
+            <td>{$n_name}</td>
+        </tr>
+        <tr>
+            <td>新闻内容</td>
+            <td>
+                {$n_desc}
+            </td>
+        </tr>
+        <tr>
+            <td>编辑人</td>
+            <td>{$n_man}</td>
+        </tr>
+        <tr>
+            <td>分类</td>
+            <td>
+              {$n_type}
+            </td>
+        </tr>
+        <tr>
+            <td>添加时间</td>
+            <td>{$n_time}</td>
+        </tr>
+        <tr>
+            <td>点击量</td>
+            <td>{$n_num}</td>
+        </tr>
+    </table>
+<a href="index.php?s=index/Index/newslist">返回首页</a>
+</body>
+</html>

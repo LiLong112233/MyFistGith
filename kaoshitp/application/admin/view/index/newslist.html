@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <table border="1">
+       {volist name="list" id="vo"}
+       <tr>
+           <td>{$vo.n_id}</td>
+           <td>{$vo.n_name}</td>
+           <td>{$vo.n_desc}</td>
+           <td>{$vo.n_man}</td>
+           <td>{$vo.n_type}</td>
+           <td><a class="btn" href="index.php?s=admin/Index/delect&n_id={$vo.n_id}">删除</a></td>
+       </tr>
+       {/volist}
+   </table>
+{$list|raw}
+   <script src="/js/jquery-3.5.1.js"></script>
+   <script>
+
+
+       $(".btn").on('cilck ',function () {
+       confirm("是否确认删除");
+
+
+
+       })
+   </script>
+</body>
+</html>

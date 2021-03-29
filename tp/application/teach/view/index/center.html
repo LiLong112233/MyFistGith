@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>用户个人信息表</h1>
+<a href="/index.php?s=user/Index/uplode">上传头像</a>
+<a href="/index.php?s=user/Index/toupiao">投票</a>
+<form action="/index.php?s=user/Index/reserve1" method="post">
+    <input type="submit" value="老张饭店预订餐桌">
+</form>
+
+{if $res}
+<form action="/index.php?s=user/Index/changepass" method="post">
+    <input type="submit" value="修改密码">
+</form>
+
+   您已签到
+<br>
+您当前积分为{$integral}
+
+签到时间
+{$res['qiandao_time']}
+{else/}
+<form action="/index.php?s=user/Index/qiandao" method="post">
+    <input type="hidden" name="uid" value="{$uid}">
+    <input type="submit" value="签到">
+</form>
+{/if}
+<hr>
+
+   <table border="1">
+       <tr>
+           <td>编号</td>
+           <td>用户名称</td>
+           <td>用户头像</td>
+           <td>邮箱email</td>
+           <td>电话号码</td>
+           <td>注册时间</td>
+           <td>最后一次登录时间</td>
+           <td>操作</td>
+       </tr>
+       <tr>
+           <td>{$uid}</td>
+           <td>{$user_name}</td>
+           <td><img src= "{if $photo}../{$photo} {else/}{/if}"
+           {if $photo} width="80" height="80" {else/}{/if} alt=""></td>
+           <td>{$email}</td>
+           <td>{$tel}</td>
+           <td>{$reg_time}</td>
+           <td>{$last_login}</td>
+           <td>
+               <a href="index.php?s=user/Index/update?uid={$uid}">修改</a>
+           </td>
+
+       </tr>
+   </table>
+   
+   
+<h5><a href="index.php?s=user/Index/out">退出</a></h5>
+
+
+
+</body>
+</html>

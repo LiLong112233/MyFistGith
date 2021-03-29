@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.5.1.js"></script>
+    <style>
+        .seat{ width: 100px;height: 100px;background-color: green ;float: left ; margin: 20px }
+    </style>
+</head>
+<body>
+<h1>老张饭店预订餐桌系统</h1>
+<h3>欢迎{$user_name}先生/女士   选座</h3>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" style="" data-id="1"  >
+    <input type="hidden" name="id" value="1">
+    <h3>1号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+    </form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="2"  >
+    <input type="hidden" name="id" value="2">
+    <h3>2号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+    </form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="3"  >
+    <input type="hidden" name="id" value="3">
+    <h3>3号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+    </form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="4"  >
+    <input type="hidden" name="id" value="4">
+    <h3>4号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="5"  >
+    <input type="hidden" name="id" value="5">
+    <h3>5号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="6"  >
+    <input type="hidden" name="id" value="6">
+    <h3>6号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="7"  >
+    <input type="hidden" name="id" value="7">
+    <h3>7号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="8"  >
+    <input type="hidden" name="id" value="8">
+    <h3>8号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="9"  >
+    <input type="hidden" name="id" value="9">
+    <h3>9号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<form action="index.php?s=user/Index/reservedo" method="post">
+<div class="seat" data-id="10"  >
+    <input type="hidden" name="id" value="10">
+    <h3>10号餐桌</h3>
+    <button class="btn1" >预订</button>
+</div>
+</form>
+<script>
+    $(".btn1").click(function (e) {
+        e.preventDefault()
+        let id =$(this).parent().attr('data-id')
+        confirm('您确定要预订'+id+'号桌吗？')
+        {
+            $.ajax({
+                type: "get",
+                url: "http://tp.2008.com/index.php?s=user/Index/reserve_ajax&id=" + id,
+                dataType: 'json',
+            }).done(function (data) {
+                self.parent().attr('style', 'background:red')
+                self.text('已预订').attr('disabled','disabled')
+            })
+        }
+    })
+</script>
+
+ </body>
+</html>

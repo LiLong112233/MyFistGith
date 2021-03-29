@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.5.1.js"></script>
+    <style>
+        #div1{width: 480px ; border: black solid 3px ; float: left}
+        .seat{ margin: 10px;width: 100px ;height: 100px ;background-color: green ; float: left; }
+        .nickname{color:white }
+         .red{background-color: red}
+        .part{
+            display:none;
+         width: 200px;
+            height: 200px;
+            border: 1px solid black;
+           display: none;
+            background-color: #EEEEEE;
+            position: absolute;
+            top: 100px; left: 150px;
+            padding: 50px;
+            position: absolute;
+            top: 100px; left: 150px;
+        }
+    </style>
+</head>
+<body>
+<h1>欢迎 <font color="red">{$user_name}    </font>  先生/女士 光临本店订座</h1>
+<div id="div1">
+    {volist name="list" id="data"}
+    <div class="seat {if $data.state==1 }red {/if}  " data-id="{$data.id}" >
+        {if $data.state==1 } <button class="btn" disabled >已预订</button>
+        {else/}
+        <button class="btn" >预订{$data.money}</button>
+        {/if}
+        <h1 class="nickname">第{$data.id}号桌</h1>
+    </div>
+    {/volist}
+</div>
+<div class="part">
+    <form action="" method="post" id="apply_form">
+        <!--<input type="hidden" name="id"  value="" id="theid">-->
+        手机号<input type="text" name="tel" id="tel"><br>
+        email<input type="email" name="email" id="email"><br>
+        身份证号<input type="text" name="IDnumber" id="IDnumber"><br>
+        <input type="submit" value="提交" class="sub">
+        <input type="reset" value="取消" class="res">
+    </form>
+</div>
+<a href="index.php?s=user/Index/center">返回主页</a>
+   <script>
+
+  // $(".btn").click(function () {
+  //     let self=$(this)
+  //     let id =self.parent().attr('data-id')
+  //     $("#theid").val(id)
+  //     var status = self.parent().attr('data-status')  //1已被预订 0可预订
+  //     if(status==1)
+  //     {
+  //         alert("座位已被预订了，请选择其他座位")
+  //         return
+  //     }
+  //
+  //        let a =confirm("您是否要预订此桌")
+  //   if (a==true){
+  //       $(".part").show(1000)
+  //
+  //       $("#btn2").click(function (e) {
+  //           e.preventDefault;
+  //         alert(1111)
+  //       })
+  //       $(".sub").click(function () {
+  //           $.ajax({
+  //               url:'/index.php?s=user/Index/reserve_ajax',
+  //               method:'post',
+  //               data:{id:id},
+  //               dataType:'json',
+  //           }).done(function () {
+  //               self.parent().css('background-color','red ')
+  //               self.text("已预订").attr('disabled','disabled')
+  //           })
+  //       })
+  //
+  //
+  //   }else{
+  //       alert("欢迎您下一次光临本店订座")
+  //   }
+  // })
+       // $(".sub").click(function () {
+       //     var show_part = document.querySelector('.part');
+       //     show_part.style.display = 'none';
+       // })
+
+       //ajax 表单添加
+       $("a.btn").click(function(){
+  var self = $(this)          // 将当前点击的 对象保存 供后续使用
+  //座位是否已被预订
+  var state = self.parent().attr('data-status')  //1已被预订 0可预订
+  if(state==1)
+  {
+      alert("座位已被预订了，请选择其他座位")
+      return
+  }
+  //判断是否登录
+  $.ajax({
+      url:'/index.php/?s=user/Index/is_login'
+
+  })
+
+
+  if(confirm('确定预订吗？')){          //  confirm()  确认窗口提示
+
+      let id = self.parent().attr('data-id')          //获取 编号
+      $(".part").show(1500)                      //显示form表单 div
+      $("#res").click(function () {
+          $(".part").hide(1500)
+      })
+      //预订填写资料表单
+      $("#apply_form").submit(function(e){
+          e.preventDefault()
+          var form = $(this)   //获取表单-
+          var tel = $("#tel").val()     //获取手机号
+          var email = $("#email").val()       //获取email
+          var IDnumber = $("#IDnumber").val()     // 获取身份证号
+          //请求后台
+          $.ajax({
+              url: '/index.php?s=user/Index/reservedo',
+              method: 'post',
+              data:{id:id,tel:tel,email:email,IDnumber:IDnumber},       //向后台发送的数据
+              dataType:'json',
+          }).done(function(){
+              //Ajax请求成功后 修改当前页面状态
+              self.parent().css('background-color','red')
+              self.parent().attr('data-status',1)
+              self.text('已预订').attr('disabled','disabled')    //禁用 button
+              form.parent().hide(1500)        //隐藏表单div
+          })
+      })
+  }
+  })
+   </script>
+</body>
+</html>

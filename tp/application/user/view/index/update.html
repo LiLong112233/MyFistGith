@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>用户修改页面</h1>
+<hr>
+<form action="index.php?s=/user/Index/updatedo" method="post" >
+    <table border="1">
+        <input type="hidden" name="uid" value={$uid}>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="user_name" id="" value={$user_name} ></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" id="" value={$email}></td>
+        </tr>
+        <tr>
+            <td>手机号</td>
+            <td><input type="tel" name="tel" id="" value={$tel}></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="修改"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

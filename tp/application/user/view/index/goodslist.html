@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <ol>
+        {volist name='list' id='user'}
+        <li>编号 {$user.goods_id}：：商品名称 {$user.goods_name}</li>
+        <hr>
+        {/volist}
+    </ol>
+</div>
+{$page|raw}
+</body>
+</html>

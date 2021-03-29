@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>用户注册页面</h1>
+<hr>
+<form action="index.php?s=/user/Index/regdo" method="post" >
+    <table border="1" bgcolor="">
+        <tr>
+
+            <td>用户名</td>
+            <td><input type="text" name="user_name" id="user_name">
+                <span id="span_name"   style="display: none" > <font color="red"> 用户名以英文开始+数字+_</font></span>
+                <span id="span_name2"   style="display: none" > <font color="red">用户名不可用</font></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" id="email">
+                <span id="span_email" style="display: none"><font color="red"> email必须带有@符号</font></span>
+                <span id="span_email2" style="display: none"><font color="red"> email已被注册使用</font></span>
+            </td>
+        </tr>
+        <tr>
+            <td>手机号</td>
+            <td><input type="tel" name="tel" id="tel">
+                <span id="span_tel" style="display: none"> <font color="red">手机号必须为11位数字</font></span>
+                <span id="span_tel2" style="display: none"> <font color="red">手机号已被注册</font></span>
+
+            </td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="pass" id="pass" onblur="pass">
+                <span id="span_pass" style="display: none"> <font color="red">由大小写字母数字+-._组成  .... 且不少于7位</font> </span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input type="password" name="pass2" id="pass2" onblur="pass2">
+                <span id="span_pass2" style="display: none"><font color="red">确认密码与密码不同</font></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="提交" id="form"></td>
+
+        </tr>
+
+    </table>
+</form>
+<script src="/js/jquery-3.5.1.js"></script>
+<script src="/js/JQ.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+  {volist name="arr" id="vo"}
+  <tr>
+      <td><a href="index.php?s=index/Index/bbblist&n_id={$vo.n_id}">新闻{$vo.n_id}</a></td>
+      <td>点击量：{$vo.n_num}</td>
+  </tr>
+{/volist}
+</table>
+</body>
+</html>

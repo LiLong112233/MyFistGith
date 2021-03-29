@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>用户注册页面</h1>
+<hr>
+<form action="index.php?s=/user/Index/regdo" method="post" >
+    <table border="1" bgcolor="">
+        <tr>
+
+            <td>用户名</td>
+            <td><input type="text" name="user_name" id="user_name">
+                <span id="span_name" > 用户名以英文开始+数字+_</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" id="email">
+                <span id="span_email">email必须带有@符号</span>
+            </td>
+        </tr>
+        <tr>
+            <td>手机号</td>
+            <td><input type="tel" name="tel" id="tel">
+                <span id="span_tel">手机号必须为11位数字</span>
+            </td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="pass" id="pass" onblur="pass">
+             <span id="span_pass">由大小写字母数字+-._组成且不少于7位</span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input type="password" name="pass2" id="pass2" onblur="pass2">
+                <span id="span_pass2">确认密码与密码不同</span>
+            </td>
+        </tr>
+        <tr>
+            <td><button id ="but">移除属性</button></td>
+            <td><input type="submit" value="提交" id="form"></td>
+
+        </tr>
+
+    </table>
+</form>
+<script>
+  let oname =document.getElementById('user_name')
+  let span_name=document.getElementById("span_name")
+    oname.addEventListener("blur", function () {
+        let length= this.value.length
+        console.log(this.value +"长度为"+length)
+        let exe =/^[a-zA-Z0-9_]{1,}$/
+        let res =exe.test(oname.value)
+        if (res){
+        span_name.style.color='green'
+        } else{
+        span_name.style.color='red'
+        }
+    })
+  let oemail =document.getElementById('email')
+  let span_email=document.getElementById('span_email')
+    oemail.addEventListener("blur", function () {
+        let length= this.value.length
+        console.log(this.value +"长度为"+length)
+        let exe =/@+/
+        let res =exe.test(oemail.value)
+        if (res){
+       span_email.style.color='green'
+        } else{
+            span_email.style.color='red'
+        }
+    })
+  let otel =document.getElementById('tel')
+  let tel =document.getElementById('span_tel')
+    otel.addEventListener("blur", function () {
+        let length= this.value.length
+        console.log(this.value +"长度为"+length)
+        let exe =/^1[0-9]{10}$/
+        let res =exe.test(otel.value)
+        if (res){
+       tel.style.color='green'
+        } else{
+      tel.style.color='red'
+        }
+    })
+  let opass =document.getElementById('pass')
+  let pass=document.getElementById('span_pass')
+    opass.addEventListener("blur", function () {
+        let length= this.value.length
+        console.log(this.value +"长度为"+length)
+        let exe =/^[A-Za-z0-9+-._]{7,}$/
+        let res =exe.test(opass.value)
+        if (res){
+        pass.style.color='green'
+        } else{
+            pass.style.color='red'
+                    }
+    })
+    let opass2=document.getElementById('pass2')
+  let  span_pass2=document.getElementById('span_pass2')
+    opass2.addEventListener('blur',function () {
+        let op1 = opass.value
+        let op2 = opass2.value
+        if (op1==op2){
+      span_pass2.style.color='green'
+        }else{
+      span_pass2.style.color='red'
+        }
+    })
+    document.getElementById('but')
+    but.addEventListener('click',function (e) {
+        e.preventDefault()
+        but.removeAttribute('title')
+    })
+</script>
+</body>
+</html>
