@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/res" method="post" enctype="multipart/form-data" onsubmit="return cheak_submit()">
+    <table border="1">
+        <tr>
+            <td>公告标题</td>
+            <td>
+                <input type="text" name="n_title" id="title" onblur="cheak_title()">
+                <span id="span_title"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>部门分类</td>
+            <td>
+                <select name="c_id" id="">
+                    <?php foreach($arr as $k =>$v){ ?>
+                    <option value="<?php echo $v['c_id'] ?>"> <?php echo $v['c_class'] ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>缩略图</td>
+            <td><input type="file" name="n_img" id=""></td>
+        </tr>
+        <tr>
+        <td>发布人</td>
+        <td><input type="text" name="n_man" id="" value="<?php echo $n_man ?>" readonly></td>
+        </tr>
+        <tr>
+            <td>发布内容</td>
+            <td><textarea name="n_desc" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="提交">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function cheak_title() {
+        var title =document.getElementById('title').value;
+        var span_title=document.getElementById('span_title');
+        var res=/^[\u4e00-\u9fa5]{6,12}$/;
+        if (title==''){
+            span_title.innerHTML="<font color='#dc143c'>标题不能为空</font>";
+            return false;
+        } else if(res.test(title)==false){
+            span_title.innerHTML="<font color='#dc143c'>标题必须为6-12位中文</font>";
+            return false;
+        }else{
+            span_title.innerHTML="<font color='green'>√</font>";
+            return true;
+        }
+    }
+    function cheak_submit() {
+        if (cheak_title()){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+</script>

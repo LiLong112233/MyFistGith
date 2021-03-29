@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>总人数</td>
+        <td><?php echo $count."人" ?></td>
+        <td>男生</td>
+        <td><?php echo $man_num."人" ?></td>
+        <td>女生</td>
+        <td><?php echo $wan_num."人" ?></td>
+    </tr>
+    <tr></tr>
+
+
+
+
+
+
+
+
+
+
+
+    <tr>
+        <td>员工编号</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>部门</td>
+    </tr>
+    <?php foreach( $arr as $k =>$v ) { ?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['name'] ?></td>
+        <td><?php echo $v['sex'] ?></td>
+        <td><?php echo $v['age'] ?></td>
+        <td><?php echo $v['w_type'] ?></td>
+    </tr>
+    <?php } ?>
+        <tr>   <td> <?php echo $str ?> </td> </tr>
+
+    <tr> <td>  <p>  年龄小于40岁  </p>   </td>    </tr>
+
+    <?php foreach( $xy40 as $k =>$v ) { ?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['name'] ?></td>
+        <td><?php echo $v['sex'] ?></td>
+        <td><?php echo $v['age'] ?></td>
+        <td><?php echo $v['w_type'] ?></td>
+    </tr>
+    <?php } ?>
+    <tr> <td>  <p>  姓名姓李的员工  </p>   </td>    </tr>
+
+    <?php foreach( $na as $k =>$v ) { ?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['name'] ?></td>
+        <td><?php echo $v['sex'] ?></td>
+        <td><?php echo $v['age'] ?></td>
+        <td><?php echo $v['w_type'] ?></td>
+    </tr>
+    <?php } ?>
+
+<h2>
+    <?php echo $avg ?>
+    <?php echo $max ?>
+    <?php echo $min ?>
+    <?php echo $sum ?>
+
+
+</h2>
+
+
+
+
+
+
+
+</table>
+
+</body>
+</html>

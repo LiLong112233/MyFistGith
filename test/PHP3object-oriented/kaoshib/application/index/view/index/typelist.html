@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2><font color="red"><?php echo $type['t_type'] ?></font>  展示列表 </h2>
+  <table border="1">
+      <?php if (!empty ($arr) ){ ?>
+      <tr>
+          <td>博文id</td>
+          <td>博文标题</td>
+          <td>作者</td>
+          <td>是否推荐</td>
+          <td>发布时间</td>
+          <td>浏览量</td>
+      </tr>
+      <?php }?>
+      <?php foreach($arr as $k => $v) { ?>
+      <tr>
+          <td><?php echo $v['id'] ?></td>
+          <td><?php echo $v['b_title'] ?></td>
+          <td><?php echo $v['b_man'] ?></td>
+          <td><?php echo $v['is_up'] ?></td>
+          <td><?php echo $v['b_time'] ?></td>
+          <td><?php echo $v['b_num'] ?></td>
+      </tr>
+      <?php } ?>
+  </table>
+  <?php if(!empty($arr)){ ?>
+  <p>总博文数 <font color="red"><?php echo $count ?></font>条,
+      浏览量1-500博文数 <font color="red"><?php echo $num ?></font> 条，
+      浏览量500-1000博文数 <font color="red"><?php echo $num2 ?></font> 条，
+      浏览量1000以上博文数 <font color="red"><?php echo $num3 ?></font> 条
+  </p>
+  <?php } ?>
+</body>
+</html>

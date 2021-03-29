@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Login/save" method="post" onsubmit="return check_submit()">
+    <table border="1">
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username" id=""></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="text" name="pwd" id="pwd" onblur="check_pwd()">
+            <span id="span_pwd"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="登录"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function check_pwd() {
+        var pwd = document.getElementById('pwd').value;
+        var span_pwd = document.getElementById('span_pwd');
+        var res = /^[a-zA-Z_][\w]{5,11}$/;
+        if (pwd == '') {
+            span_pwd.innerHTML = "<font color='red'>密码不能为空</font>";
+            return false;
+        } else if (res.test(pwd) == false) {
+            span_pwd.innerHTML = "<font color='red'>密码不能以数字开头，必须在6-12位之间</font>"
+            return false;
+        } else {
+            span_pwd.innerHTML = "<font color='green'>√</font>";
+            return true;
+        }
+    }
+     function check_submit() {
+         if (check_pwd()){
+             return true;
+         } else{
+             return false;
+         }
+
+
+
+
+    }
+</script>

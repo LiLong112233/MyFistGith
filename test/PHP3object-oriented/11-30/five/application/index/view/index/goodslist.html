@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/goodslist" method="get">
+<input type="text" name="g_name" id="" placeholder="商品名称" value="<?php echo $g_name ?>">
+<select name="g_id" id="">
+    <option value="">--请选择--</option>
+    <?php foreach( $raa as $k => $v ) { ?>
+    <option value="<?php echo $v['g_id'] ?>"<?php if($g_id==$v['g_id']){echo"selected"; } ?>> <?php echo $v['g_brand'] ?></option>
+    <?php } ?>
+</select>
+<select name="g_up" id="">
+    <?php if ($g_up=='' ){ ?>
+    <option value="" selected>--请选择--</option>
+    <option value="1">是</option>
+    <option value="2">否</option>
+    <?php }else if ($g_up==1){  ?>
+    <option value="" >--请选择--</option>
+    <option value="1"selected>是</option>
+    <option value="2">否</option>
+    <?php }else if ($g_up==2){ ?>
+    <option value="" >--请选择--</option>
+    <option value="1">是</option>
+    <option value="2"selected>否</option>
+    <?php }?>
+
+
+</select>
+<input type="submit" value="搜😁索">
+</form>
+
+
+<table border="1">
+    <tr>
+        <td>商品编号</td>
+        <td>商品名称</td>
+        <td>商品图片</td>
+        <td>商品类型</td>
+        <td>商品描述</td>
+        <td>是否上架</td>
+        <td>商品添加时间</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($arr as $k =>$v) {  ?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['g_name'] ?></td>
+        <td><img src="<?php echo'/'. $v['g_photo'] ?>" width="80" height="80" alt=""></td>
+        <td><?php echo $v['g_brand'] ?></td>
+        <td><?php echo $v['g_intro'] ?></td>
+        <td>
+            <?php if ($v['g_up']==1){ echo"是";}else if($v['g_up']==2){ echo"否" ;}?>
+
+        </td>
+        <td><?php echo $v['g_time'] ?></td>
+        <td><a href="/index.php/index/Index/delete?id=<?php echo $v['id'] ?>">删除</a></td>
+    </tr>
+    <?php } ?>
+</table>
+<?php echo $str ?>
+</body>
+</html>

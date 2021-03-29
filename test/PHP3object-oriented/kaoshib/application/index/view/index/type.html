@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>分类id</td>
+        <td>分类名称</td>
+        <td>分类添加时间</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($arr as $k =>$v) { ?>
+    <tr>
+        <td><?php echo $v['t_id'] ?></td>
+        <td><?php echo $v['t_type'] ?></td>
+        <td><?php echo $v['t_time'] ?></td>
+        <td>
+            <a href="/index.php/index/Index/typelist?t_id=<?php echo $v['t_id'] ?>">查看</a>
+            <a href="/index.php/index/Index/delete?t_id=<?php echo $v['t_id'] ?>">删除</a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

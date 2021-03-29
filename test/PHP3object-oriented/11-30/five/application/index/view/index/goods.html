@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/save" method="post" enctype="multipart/form-data" onsubmit="return check_submit()">
+    <table border="1">
+        <tr>
+            <td>商品名称</td>
+            <td>
+                <input type="text" name="g_name" id="g_name" onblur="check_name()">
+                <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>商品图片</td>
+            <td><input type="file" name="g_img" id=""></td>
+        </tr>
+        <tr>
+            <td>商品类型</td>
+            <td>
+                <select name="g_id" id="">
+                    <?php foreach($arr as $k =>$v ){ ?>
+                    <option value="<?php echo $v['g_id'] ?>"><?php echo $v['g_brand'] ?></option>
+                    <?php }?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>商品描述</td>
+            <td><textarea name="g_intro" id="g_intro" cols="30" rows="10" onblur="check_intro()"></textarea>
+            <span id="span_intro"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>是否上架</td>
+            <td>
+                <input type="radio" name="g_up" id="" value="1" checked >是
+                <input type="radio" name="g_up" id="" value="2"  >否
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="添加"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function check_name(){
+        var g_name = document.getElementById('g_name').value;
+        var span_name=document.getElementById('span_name');
+        var res=/^[a-zA-Z\u4e00-\u9fa5][a-zA-Z0-9\u4e00-\u9fa5]{5,11}$/;
+        if (g_name==''){
+            span_name.innerHTML="<font color='red'>商品名称不能为空</font>";
+            return false;
+        } else if(res.test(g_name)==false ){
+            span_name.innerHTML="<font color='red'>商品名称由数字字母汉字组成6-12位且数字不能开头</font>";
+            return false;
+        }else{
+            span_name.innerHTML="<font color='green'>😀😀😀😀</font>"
+            return true;
+        }
+    }
+    function check_intro() {
+       var g_intro=document.getElementById('g_intro').value;
+       var span_intro=document.getElementById('span_intro');
+       if (g_intro=='') {
+           span_intro.innerHTML="<font color='red'>描述内容不能为空</font>";
+           return false;
+       }else{
+           span_intro.innerHTML="<font color='green'>√</font>";
+           return true;
+       }
+    }
+    function check_submit(){
+        if (check_name()&&check_intro()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+</script>

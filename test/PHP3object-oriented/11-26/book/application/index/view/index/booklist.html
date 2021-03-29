@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>书籍展示</h1>
+
+<h3><a href="/index.php/index/Index/book">书籍添加</a></h3>
+<form action="/index.php/index/Index/booklist" method="get">
+    <input type="text" name="b_name" id="" placeholder="书籍名称" value="<?php echo $b_name ?>">
+    <select name="b_id" id="">
+        <option value="">--请选择--</option>
+        <?php foreach($res as $k =>$v){ ?>
+        <option value="<?php echo $v['b_id'] ?>" <?php if($b_id==$v['b_id']){ echo "selected"; } ?>><?php echo $v['b_cate'] ?></option>
+        <?php } ?>
+    </select>
+    <input type="submit" value="提🐳交">
+</form>
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>书籍名称</td>
+        <td>书籍内容</td>
+        <td>作者</td>
+        <td>添加时间</td>
+        <td>书籍分类</td>
+        <td>书籍分类</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($arr as $k =>$v ){ ?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['b_name'] ?></td>
+        <td><?php echo $v['b_desc'] ?></td>
+        <td><?php echo $v['b_man'] ?></td>
+        <td><?php echo $v['b_time'] ?></td>
+        <td><?php echo $v['b_cate'] ?></td>
+        <td><img src="<?php echo '/'.$v['b_img'] ?>" width="80" height="80" alt=""></td>
+        <td><a href="/index.php/index/Index/delete?id=<?php echo $v['id'] ?>">删除</a>
+            <a href="/index.php/index/Index/update?id=<?php echo $v['id'] ?>">修改</a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+<?php echo $str ?>
+</body>
+</html>

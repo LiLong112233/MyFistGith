@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <form action="\index.php\index\Index\fishlist" method="get">
+        <input type="text" name="f_name" placeholder="鱼名字">
+        <!--<select name="t_id" id="">-->
+            <!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+            <!--<?php foreach ($res as $k =>$v) { ?>-->
+            <!--<option value="<?php echo $v['t_id'] ;?>"><?php echo $v ['t_name']; ?></option>-->
+            <!--<?php }?>-->
+        <!--</select>-->
+        <input type="submit" value="搜索">
+    </form>
+    <tr>
+        <td>编号</td>
+        <td>鱼名字</td>
+        <td>鱼类型</td>
+        <td>鱼图片</td>
+        <td>鱼介绍</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($res as $k=>$v){?>
+    <tr>
+        <td><?php echo $v['f_id']?></td>
+        <td><?php echo $v['f_name']?></td>
+
+        <td><?php echo $v['t_name']?></td>
+        <td><img src="<?php echo '/'.$v['f_img']?>" height="80" width="50" alt=""></td>
+        <td><?php echo $v['f_desc']?></td>
+        <td>
+            <a href="delete?f_id=<?php echo $v['f_id']?>">删除</a>
+            <a href="edit?f_id=<?php echo $v['f_id']?>">修改</a>
+        </td>
+    </tr>
+    <?php }?>
+</table>
+<?php echo $str ?>
+</body>
+</html>

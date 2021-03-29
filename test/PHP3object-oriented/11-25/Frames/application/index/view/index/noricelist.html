@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/noricelist" method="get">
+    <input type="text" name="n_title" id="" placeholder="标题">
+    <select name="c_id" id="">
+        <option value="">--请选择-- </option>
+        <?php foreach($arrr as $k => $v ){ ?>
+        <option value="<?php echo $v['c_id'] ?>"><?php echo $v['c_class'] ?></option>
+        <?php } ?>
+    </select>
+    <input type="submit" value="搜索😂😂😂😂😂😂">
+    
+</form>
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>标题</td>
+        <td>发布者</td>
+        <td>部门</td>
+        <td>缩略图</td>
+        <td>发布时间</td>
+        <td>发布内容</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($arr as $k =>$v){ ?>
+    <tr>
+        <td><?php echo $v['n_id'] ?></td>
+        <td><?php echo $v['n_title'] ?></td>
+        <td><?php echo $v['n_man'] ?></td>
+        <td><?php echo $v['c_class'] ?></td>
+        <td><img src="<?php echo '/'. $v['n_img'] ?>" width="80" height="80" alt=""></td>
+        <td><?php echo $v['n_time'] ?></td>
+        <td><?php echo $v['n_desc'] ?></td>
+        <td>
+            <a href="/index.php/index/Index/delete?n_id=<?php echo $v['n_id'] ?>">删除</a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+<?php echo $str ?>
+
+
+
+<h3 ><a href="/index.php/index/Index/out">退出</a></h3>
+</body>
+</html>

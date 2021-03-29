@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="\index.php\index\Index\save" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <td>鱼名字</td>
+            <td><input type="text" name="f_name" id=""></td>
+        </tr>
+        <tr>
+            <td>鱼种类介绍</td>
+            <td><select name="t_id" id="">
+                <?php foreach ($res as $k =>$v) { ?>
+                <option value="<?php echo $v['t_id']?>"><?php echo $v['t_name'] ?></option>
+                <?php } ?>
+            </select></td>
+        </tr>
+        <tr>
+            <td>鱼图片</td>
+            <td>
+                <input type="file" name="f_img" id="">
+            </td>
+        </tr>
+        <tr>
+            <td>鱼介绍</td>
+            <td><textarea name="f_desc" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="提交"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

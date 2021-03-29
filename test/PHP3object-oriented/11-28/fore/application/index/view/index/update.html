@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/index.php/index/Index/updatedo" method="post" enctype="multipart/form-data" >
+    <table border="1">
+        <input type="hidden" name="p_id" value="<?php echo $arr['p_id'] ?>">
+        <tr>
+            <td>参加节目名称</td>
+            <td><input type="text" name="p_name" id="p_name" value="<?php echo $arr['p_name'] ?>">
+            </td>
+        </tr>
+        <tr>
+            <td>节目封面</td>
+            <td>
+                <img src="<?php echo '/'.$arr['p_img'] ?>" width="80" height="80" alt="">
+                <input type="file" name="p_img" id="">
+            </td>
+        </tr>
+        <tr>
+            <td>节目类型</td>
+            <td>
+                <select name="t_id" id="">
+                    <?php foreach($res as $k => $v ){ ?>
+                    <option value="<?php echo $v['t_id'] ?>"<?php if($arr['t_id']==$v['t_id']){echo "selected";} ?>   ><?php echo $v['p_type'] ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>节目参与人员</td>
+            <td><textarea name="p_man" id="" cols="30" rows="10"><?php echo $arr['p_man'] ?></textarea></td>
+        </tr>
+        <tr>
+            <td>考核状态</td>
+            <td>
+                <?php if($arr['p_status']==1){ ?>
+                <input type="radio" name="p_status" id="" value="1" checked>待审核
+                <input type="radio" name="p_status" id="" value="2">审核中
+                <input type="radio" name="p_status" id="" value="3">未通过
+                <input type="radio" name="p_status" id="" value="4">已通过
+                <?php }else if($arr['p_status']==2){ ?>
+                <input type="radio" name="p_status" id="" value="1">待审核
+                <input type="radio" name="p_status" id="" value="2" checked>审核中
+                <input type="radio" name="p_status" id="" value="3">未通过
+                <input type="radio" name="p_status" id="" value="4">已通过
+                <?php }else if($arr['p_status']==3){ ?>
+                <input type="radio" name="p_status" id="" value="1" >待审核
+                <input type="radio" name="p_status" id="" value="2">审核中
+                <input type="radio" name="p_status" id="" value="3"checked>未通过
+                <input type="radio" name="p_status" id="" value="4">已通过
+                <?php }else if($arr['p_status']==4){ ?>
+                <input type="radio" name="p_status" id="" value="1" >待审核
+                <input type="radio" name="p_status" id="" value="2">审核中
+                <input type="radio" name="p_status" id="" value="3">未通过
+                <input type="radio" name="p_status" id="" value="4"checked>已通过
+                <?php } ?>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="修改"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

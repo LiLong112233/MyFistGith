@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>游戏名称</td>
+        <td>游戏介绍</td>
+        <td>游戏品牌</td>
+        <td>游戏价格</td>
+        <td>是否上架</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($arr as $k=>$v)  {?>
+    <tr>
+        <td><?php echo $v['gid'] ?></td>
+        <td><?php echo $v['gname']?></td>
+        <td><?php echo $v['gdesc']?></td>
+        <td><?php echo $v['gbrand']?></td>
+        <td><?php echo $v['gprice']?></td>
+        <td>
+            <?php if($v['is_up']==1){
+            echo"是";
+            }else if($v['is_up']==2){
+            echo"否";
+            }
+
+?>
+        </td>
+        <td>
+            <a href="delete?gid=<?php echo $v['gid']?>">删除</a>
+            <a href="edit?gid=<?php echo $v['gid']?>">修改</a>
+        </td>
+    </tr>
+    <?php }?>
+</table>
+</body>
+</html>

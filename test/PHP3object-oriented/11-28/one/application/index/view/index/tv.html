@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/save" method="post" enctype="multipart/form-data" onsubmit="return check_submit()">
+    <table border="1">
+        <tr>
+            <td>电影标题</td>
+            <td>
+                <input type="text" name="c_name" id="c_name" onblur="check_name()" >
+                <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>电影分类</td>
+            <td>
+                <select name="t_id" id="">
+                   <?php  foreach($arr as $k =>$v){ ?>
+                    <option value="<?php echo $v['t_id'] ?>"><?php echo $v['t_name'] ?></option>
+                   <?php } ?>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>电影导演</td>
+            <td><input type="text" name="c_man" id="c_man" onblur="check_man()">
+            <span id="span_man"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>是否上映</td>
+            <td>
+                <input type="radio" name="is_up" id="" value="是" checked> 是
+                <input type="radio" name="is_up" id="" value="否"> 否
+
+            </td>
+        </tr>
+        <tr>
+            <td>电影海报</td>
+            <td><input type="file" name="c_img" id=""></td>
+        </tr>
+        <tr>
+            <td>电影简介</td>
+            <td>
+                <textarea name="c_desc" id="c_desc" cols="30" rows="10" onblur="check_desc()"></textarea>
+                <span id="span_desc"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="提交"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function check_name() {
+        var c_name = document.getElementById('c_name').value;
+        var span_name=document.getElementById('span_name');
+        var res=/^[a-zA-Z0-9\u4e00-\u9fa5]{2.10}$/;
+        if (c_name==''){
+            span_name.innerHTML="<font color='red'>电影标题不能为空</font>"
+            return false;
+        }else if (res.test(c_name)) {
+            span_name.innerHTML="<font color='red'>电影标题须为2-10位汉字字母数字组成</font>"
+            return false;
+        }else{
+            var aaa=false;
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function () {
+                if (xhr.readyState==4&&xhr.status==200){
+                    if (xhr.responseText=='yes'){
+                        span_name.innerHTML="<font color='red'>该电影标题已经存在</font>"
+                        aaa=false
+                    }else{
+                        span_name.innerHTML="<font>😉√</font> "
+                        aaa=true;
+                    }
+                }
+            }
+        xhr.open('get' ,'/index.php/index/Index/ajax?c_name='+c_name ,false );
+        xhr.send();
+        return aaa
+        }
+    }
+function check_man() {
+        var c_man=document.getElementById('c_man').value;
+        var span_man=document.getElementById('span_man');
+        var rse =/^[\u4e00-\u9fa5]{2,4}$/;
+        if (c_man==''){
+            span_man.innerHTML="<font color='red'>电影导演名称不能为空</font>"
+            return false;
+        }else if(rse.test(c_man)==false){
+            span_man.innerHTML="<font color='red'>导演名称需为2-4位汉字组成</font>"
+            return false;
+    } else{
+            span_man.innerHTML="<font color='green'>√</font>"
+            return true;
+        }
+}
+function check_desc() {
+    var c_desc =document.getElementById('c_desc').value;
+    var span_desc=document.getElementById('span_desc');
+    if (c_desc==''){
+        span_desc.innerHTML="<font color='red'>电影简介不内为空</font>"
+        return false;
+    }else{
+        span_desc.innerHTML="<font color='green'>√</font>";
+        return true;
+    }
+}
+function check_submit() {
+    if (check_name()&&check_man()&&check_desc()){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+
+
+
+
+</script>

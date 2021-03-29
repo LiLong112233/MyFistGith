@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/updo" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <input type="hidden" name="id" value="<?php echo $arr['id'] ?>">
+        <tr>
+            <td>图书名称</td>
+            <td><input type="text" name="b_name" id="b_name" onblur="check_name()" value="<?php echo $arr['b_name'] ?>">
+            <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>作者</td>
+            <td><input type="text" name="b_man" id="b_man" onblur="check_man()" value="<?php echo $arr['b_man'] ?>">
+            <span id="span_man" ></span>
+            </td>
+        </tr>
+        <tr>
+            <td>所属分类</td>
+            <td>
+                <select name="b_id" id="">
+                    <?php foreach( $res as $k =>$v  ){ ?>
+                    <option value="<?php echo $v['b_id'] ?>" <?php if($arr['b_id']==$v['b_id']){echo "selected"} ?>><?php echo $v['b_cate'] ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>封面</td>
+            
+            <td>
+                <img src="<?php echo '/'.$arr['b_img'] ?>" width="80" height="80"  alt="">
+                <input type="file" name="b_img" id="" > </td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td><textarea name="b_desc" id="b_desc" cols="30" rows="10" onblur="check_desc()"><?php echo $arr['b_desc'] ?></textarea>
+            <span id="span_desc"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="发布"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

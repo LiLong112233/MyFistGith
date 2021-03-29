@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Form Validation</title>
+
+  <link href="/style/admin/css/style.css" rel="stylesheet">
+  <link href="/style/admin/css/style-responsive.css" rel="stylesheet">
+
+    <script type="text/javascript" charset="utf-8" src="/style/admin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/style/admin/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/style/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="/style/admin/js/html5shiv.js"></script>
+  <script src="/style/admin/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <?php  include('./application/admin/view/public/left.html')?>
+
+
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <?php  include('./application/admin/view/public/top.html')?>
+
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            博文添加
+                        </header>
+                        <div class="panel-body">
+                            <div class=" form">
+                                <form class="cmxform form-horizontal adminex-form"  method="post" action="/index.php/admin/Blog/save" enctype="multipart/form-data">
+                                    <div class="form-group ">
+                                        <label for="cname" class="control-label col-lg-2">博文标题</label>
+                                        <div class="col-lg-10">
+                                            <input class=" form-control" id="cname" name="b_name" minlength="2" type="text" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="cemail" class="control-label col-lg-2">博文分类</label>
+                                        <div class="col-lg-10">
+                                            <select name="c_id" id="">
+                                                <?php foreach($cate as $k=>$v){?>
+                                                <option value="<?php echo $v['c_id']?>"><?php echo $v['c_name']?></option>
+                                                <?php }?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">创作人</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="b_man" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">博文图片</label>
+                                        <div class="col-lg-10">
+                                            <input type="file" name="b_img" id="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                    <label  class="control-label col-lg-2">博文内容</label>
+                                    <div class="col-lg-10">
+                                        <textarea name="b_content" id="editor" cols="30" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                    <div class="form-group ">
+                                        <label  class="control-label col-lg-2">是否推荐</label>
+                                        <div class="col-lg-10">
+                                            <input type="radio" name="b_is" id="" value="1">是
+                                            <input type="radio" name="b_is" id="" value="2" checked>否
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button class="btn btn-primary" type="submit">提交</button>
+                                            <button class="btn btn-default" type="reset">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <footer>
+            2014 &copy; AdminEx by ThemeBucket
+        </footer>
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/style/admin/js/jquery-1.10.2.min.js"></script>
+<script src="/style/admin/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/style/admin/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/style/admin/js/bootstrap.min.js"></script>
+<script src="/style/admin/js/modernizr.min.js"></script>
+<script src="/style/admin/js/jquery.nicescroll.js"></script>
+
+<script type="text/javascript" src="/style/admin/js/jquery.validate.min.js"></script>
+<script src="/style/admin/js/validation-init.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/style/admin/js/scripts.js"></script>
+<script>
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+</script>
+</body>
+</html>

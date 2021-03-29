@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="\index.php\index\Index\update" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <input type="hidden" name="p_id" value="<?php echo $arr['p_id'] ;?>">
+        <tr>
+            <td>节目名称</td>
+            <td><input type="text" name="p_name" id="" value="<?php echo $arr['p_name'] ;?>"></td>
+        </tr>
+        <tr>
+            <td>宣传封面</td>
+            <td>
+                <img src="<?php echo '/'.$arr['p_img'] ;?>" width="80" height="80" alt="">
+                <input type="file" name="p_img" id="">
+            </td>
+        </tr>
+        <tr>
+            <td>类型</td>
+            <td><select name="t_id" id="">
+               <?php foreach($res as $k =>$v ){ ?>
+                <option value="<?php echo $v['t_id']; ?>" <?php if( $v['t_id']==$arr['t_id']){echo "selected" ;} ;?>><?php echo $v ['p_type'] ?> </option>
+                <?php } ?>
+            </select></td>
+        </tr>
+        <tr>
+            <td>参与人员</td>
+            <td>
+                <textarea name="p_man" id="" cols="30" rows="10"><?php echo $arr['p_man'] ;?></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>节目状态</td>
+            <td>
+                <input type="radio" name="p_status" id="" value="1" checked>待审核
+                <input type="radio" name="p_status" id="" value="2">审核中
+                <input type="radio" name="p_status" id="" value="3">已通过
+                <input type="radio" name="p_status" id="" value="4">未通过
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="√  修改"></td>
+            <td><input type="reset" value="重置"></td>
+        </tr>
+    </table>
+</form>      
+</body>
+</html>

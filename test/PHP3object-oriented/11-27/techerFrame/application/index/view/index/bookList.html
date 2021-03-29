@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="get">
+    <input type="text" name="b_name" placeholder="图书名称" value="<?php echo $b_name;?>">
+    <select name="t_id" id="">
+        <option value="">请选择</option>
+         <?php foreach($cate as $k=>$v){?>
+        <option value="<?php echo $v['t_id']?>" <?php if($t_id == $v['t_id']){echo "selected";}?>><?php echo $v['t_name']?></option>
+        <?php }?>
+    </select>
+    <input type="submit" value="搜索">
+</form>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>图书名称</td>
+        <td>作者</td>
+        <td>分类</td>
+        <td>封面</td>
+        <td>内容</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($res as $k=>$v){?>
+    <tr>
+        <td><?php echo $v['b_id']?></td>
+        <td><?php echo $v['b_name']?></td>
+        <td><?php echo $v['b_man']?></td>
+        <td>
+           <?php echo $v['t_name'] ?>
+        </td>
+        <td><img src="\<?php echo $v['b_img']?>" width="50" height="80" alt=""></td>
+        <td><?php echo $v['b_content']?></td>
+        <td>
+            <a href="delete?b_id=<?php echo $v['b_id'] ?>">删除</a>
+            <a href="edit?b_id=<?php echo $v['b_id'] ?>">修改</a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+<?php echo $p_str;?>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/save" method="post">
+<table border="1">
+    <tr>
+        <td>游戏名称</td>
+        <td>
+            <input type="text" name="gname" id="">          
+        </td>
+    </tr>
+    <tr>
+        <td>游戏价格</td>
+        <td><input type="text" name="gprice" id=""></td>
+    </tr>
+    <tr>
+        <td>游戏介绍</td>
+        <td><textarea name="gdesc" id="" cols="30" rows="10"></textarea></td>
+    </tr>
+    <tr>
+        <td>游戏品牌</td>
+        <td>
+            <input type="text" name="gbrand" id="">
+        </td>
+    </tr>
+    <tr>
+        <td>是否上市</td>
+        <td>
+            <input type="radio" name="is_up" id="" value="1">是
+            <input type="radio" name="is_up" id="" value="2">否
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="提交"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/updatedo" method="post" enctype="multipart/form-data" onsubmit="return check_submit()">
+    <table border="1">
+        <input type="hidden" name="id" value="<?php echo $arr['id'] ?>">
+        <tr>
+            <td>电影标题</td>
+            <td>
+                <input type="text" name="c_name" id="c_name" onblur="check_name()" value="<?php echo $arr['c_name'] ?>" >
+                <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>电影分类</td>
+            <td>
+                <select name="t_id" id="">
+                   <?php  foreach($res as $k =>$v){ ?>
+                    <option value="<?php echo $v['t_id'] ?>" <?php  if($arr['t_id']==$v['t_id']){ echo"selected";  } ?>><?php echo $v['t_name'] ?></option>
+                   <?php } ?>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>电影导演</td>
+            <td><input type="text" name="c_man" id="c_man" onblur="check_man()" value="<?php echo $arr['c_man'] ?>">
+            <span id="span_man"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>是否上映</td>
+            <td>
+                <?php if($arr['is_up']=='是'){ ?>
+                <input type="radio" name="is_up" id="" value="是" checked> 是
+                <input type="radio" name="is_up" id="" value="否"> 否
+                <?php }else { ?>
+                <input type="radio" name="is_up" id="" value="是" > 是
+                <input type="radio" name="is_up" id="" value="否" checked> 否
+                <?php } ?>
+            </td>
+        </tr>
+        <tr>
+            <td>电影海报</td>
+            <td><img src="<?php echo '/'.$arr['c_img'] ?>" width="80" height="80" alt="">
+           <input type="file" name="c_img" id=""></td>
+        </tr>
+        <tr>
+            <td>电影简介</td>
+            <td>
+                <textarea name="c_desc" id="c_desc" cols="30" rows="10" onblur="check_desc()"><?php echo $arr['c_desc'] ?></textarea>
+                <span id="span_desc"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="提交"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

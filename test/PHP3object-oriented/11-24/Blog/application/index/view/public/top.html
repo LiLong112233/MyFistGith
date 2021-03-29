@@ -1,0 +1,11 @@
+<header>
+    <div id="logo"><a href="/"></a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <nav class="topnav" id="topnav">
+        <a href="index.html"><span>首页</span><span class="en">Protal</span></a>
+        <a href="about.html"><span>关于我</span><span class="en">About</span></a>
+        <?php foreach( $arr as $k =>$v){ ?>
+        <a href="newlist.html"><span><?php echo $v['c_type'] ?></span><span class="en">Life</span></a>
+        <?php } ?>
+    </nav>
+</header>

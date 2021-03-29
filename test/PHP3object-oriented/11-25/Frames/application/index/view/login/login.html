@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Login/save" method="post" onsubmit="return cheak_submit()">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username" id="" ></td>
+
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="pwd" id="pwd" onblur="cheak_pwd()">
+            <span id="span_pwd"></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="登录"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function cheak_pwd() {
+        var pwd =document.getElementById('pwd').value;
+        var span_pwd=document.getElementById('span_pwd');
+        var res =/^[a-zA-Z][\w]{5,11}$/;
+        if (pwd==''){
+            span_pwd.innerHTML="<font color='#dc143c '>密码不能空</font>";
+            return false;
+        } else if (res.test(pwd)==false){
+            span_pwd.innerHTML="<font color='#dc143c'>密码必须以字母开头，由数字之母6-12位组成</font>";
+            return false;
+        } else{
+            span_pwd.innerHTML="<font color='#7fffd4'>√</font>";
+            return true;
+        }
+    }
+    function cheak_submit() {
+        if (cheak_pwd()){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+
+
+
+
+
+</script>

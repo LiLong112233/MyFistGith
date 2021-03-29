@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="\index.php\index\Index\save" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <td>节目名称</td>
+            <td><input type="text" name="p_name" id=""></td>
+        </tr>
+        <tr>
+            <td>宣传封面</td>
+            <td>
+                <input type="file" name="p_img" id="">
+            </td>
+        </tr>
+        <tr>
+            <td>类型</td>
+            <td><select name="t_id" id="">
+               <?php foreach($arr as $k =>$v ){ ?>
+                <option value="<?php echo $v['p_id']; ?>"><?php echo $v ['p_type'] ?> </option>
+                <?php } ?>
+            </select></td>
+        </tr>
+        <tr>
+            <td>参与人员</td>
+            <td>
+                <textarea name="p_man" id="" cols="30" rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>节目状态</td>
+            <td>
+                <input type="radio" name="p_status" id="" value="1" checked>待审核
+                <input type="radio" name="p_status" id="" value="2">审核中
+                <input type="radio" name="p_status" id="" value="3">已通过
+                <input type="radio" name="p_status" id="" value="4">未通过
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="√  增加"></td>
+            <td><input type="reset" value="重置"></td>
+        </tr>
+    </table>
+</form>      
+</body>
+</html>

@@ -1,0 +1,17 @@
+<header>
+    <div id="logo"><a href="/"></a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <nav class="topnav" id="topnav">
+        <a href="index.html">
+            <span>首页</span><span class="en">Protal</span>
+        </a>
+        <?php foreach($cate as $k=>$v){?>
+        <a href="<?php echo $v['c_address']?>">
+            <span><?php echo $v['c_name']?></span><span class="en">About</span>
+        </a>
+        <?php }?>
+        <a href="about.html">
+            <span>关于我</span><span class="en">About</span>
+        </a>
+    </nav>
+</header>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/tvlist" method="get">
+    <input type="text" name="c_name" id="" placeholder="电影标题" value="<?php echo $c_name ?>">
+    <select name="t_id" id="">
+        <option value="">--请选择--</option>
+        <?php foreach($arrr as $k =>$v ){ ?>
+        <option value="<?php echo $v['t_id'] ?>" <?php if ($t_id==$v['t_id']){ echo "selected"; }  ?>> <?php echo $v['t_name'] ?> </option>
+        <?php } ?>
+    </select>
+    <input type="submit" value="搜索">
+</form>
+
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>电影标题</td>
+        <td>电影分类</td>
+        <td>导演</td>
+        <td>是否上映</td>
+        <td>电影封面</td>
+        <td>电影介绍</td>
+        <td>发布时间</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($arr as $k =>$v) { ?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['c_name'] ?></td>
+        <td><?php echo $v['t_name'] ?></td>
+        <td><?php echo $v['c_man'] ?></td>
+        <td><?php echo $v['is_up'] ?></td>
+        <td><img src="<?php echo '/'.$v['c_img'] ?>" width="80" height="80" alt=""></td>
+        <td><?php echo $v['c_desc'] ?></td>
+        <td><?php echo $v['c_time'] ?></td>
+        <td>
+            <a href="/#" onclick="del()" id="sss">删除</a>
+            <a href="/index.php/index/Index/update?id=<?php echo $v['id'] ?>">修改</a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+<?php echo $str ?>
+</body>
+</html>
+<script>
+    function del() {
+        var sss =document.getElementById('sss');
+        if (window.confirm('是否确认删除？')){
+       /index.php/index/Index/delete?id=<?php echo $v['id'] ?>
+        }else{
+
+        }
+    }
+</script>

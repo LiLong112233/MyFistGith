@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/save" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <td>图书名称</td>
+            <td><input type="text" name="b_name" id="b_name" onblur="check_name()">
+            <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>作者</td>
+            <td><input type="text" name="b_man" id="b_man" onblur="check_man()">
+            <span id="span_man" ></span>
+            </td>
+        </tr>
+        <tr>
+            <td>所属分类</td>
+            <td>
+                <select name="b_id" id="">
+                    <?php foreach( $aa as $k =>$v  ){ ?>
+                    <option value="<?php echo $v['b_id'] ?>"><?php echo $v['b_cate'] ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>封面</td>
+            <td><input type="file" name="b_img" id=""></td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td><textarea name="b_desc" id="b_desc" cols="30" rows="10" onblur="check_desc()"></textarea>
+            <span id="span_desc"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="发布"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function check_name() {
+        var b_name = document.getElementById('b_name').value;
+        var span_name= document.getElementById('span_name');
+        var res= /^[a-zA-Z0-9_\u4e00-\u9fa5]{2,10}$/;
+    if (b_name==''){
+        span_name.innerHTML="<font color='red'>图书名称不能为空</font>";
+        return false;
+    }else if (res.test(b_name)==false){
+        span_name.innerHTML="<font color='red'>图书名由数字、字母、汉字 组成2-10位</font>";
+        return false;
+    }else{
+        var aaa=true;
+        var xhr =new XMLHttpRequest();
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4 && xhr.status==200){
+            var result=xhr.responseText;
+            if (result=='no'){
+                span_name.innerHTML="<font color='green'>√</font>";
+                aaa=true;
+            } else if (result=='yes'){
+                span_name.innerHTML="<font color='red' >用户名已存在</font>";
+                aaa=false;
+            }
+        }
+    }
+xhr.open('get','/index.php/index/Index/ajax?b_name='+b_name);
+xhr.send();
+return aaa;
+    }
+    }
+  function check_man() {
+   var b_man=document.getElementById('b_man').value;
+   var span_man=document.getElementById('span_man');
+   var des =/^[\u4e00-\u9fa5]{2,4}$/;
+   if (b_man==''){
+       span_man.innerHTML="<font color='red'>作者姓名不能为空</font>";
+       return false;
+   }else if (des.test(b_man)==false) {
+       span_man.innerHTML="<font color='red'>作者名称只能是2-4位汉字</font>";
+       return false;
+      }else{
+       span_man.innerHTML="<font color='green'>√</font>";
+       return true;
+   }
+  }
+  function check_desc() {
+        var b_desc=document.getElementById('b_desc').value;
+        var span_desc=document.getElementById('span_desc');
+        if (b_desc==''){
+            span_desc.innerHTML="<font color='red'>内容不能为空</font>";
+            return false;
+        } else{
+            span_desc.innerHTML="<font color='green'>√</font>";
+            return true;
+        }
+
+  }
+
+
+
+
+
+
+
+
+</script>

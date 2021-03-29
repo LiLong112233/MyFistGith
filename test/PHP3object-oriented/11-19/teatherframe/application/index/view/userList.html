@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>电话</td>
+        <td>年龄</td>
+        <td>身高</td>
+    </tr>
+    <?php foreach($arr as $k=>$v)  {?>
+    <tr>
+        <td><?php echo $v['id'] ?></td>
+        <td><?php echo $v['username']?></td>
+        <td><?php echo $v['tel']?></td>
+        <td><?php echo $v['age']?></td>
+        <td><?php echo $v['height']?></td>
+    </tr>
+    <?php }?>
+</table>
+</body>
+</html>

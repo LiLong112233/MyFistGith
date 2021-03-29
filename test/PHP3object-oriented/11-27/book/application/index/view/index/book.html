@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/bookdo" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <td>图书名称</td>
+            <td><input type="text" name="b_name" id="b_name" onblur="check_name()">
+            <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>作者</td>
+            <td><input type="text" name="b_man" id="" value="<?php echo $b_man ?>" readonly> </td>
+        </tr>
+        <tr>
+            <td>所属分类</td>
+            <td>
+                <select name="b_id" id="">
+                    <?php foreach($arr as $k =>$v){ ?>
+                    <option value="<?php echo $v['b_id'] ?>"><?php echo $v['b_cate'] ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>封面</td>
+            <td><input type="file" name="b_img" id=""></td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td><textarea name="b_desc" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="发布"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function check_name() {
+     var b_name=document.getElementById('b_name').value;
+     var span_name=document.getElementById('span_name');
+     var res =/^[0-9a-zA-Z\u4e00-\u9fa5]{2-10}$/;
+     if (b_name==''){
+         span_name.innerHTML="<font color='red'>图书名称不能为空<font>"
+         return false;
+     } else if (b_name.test(b_name)==false) {
+         span_name.innerHTML="<font color='red'>图书名称必须由2-10位数字字母下划线组成</font>"
+         return false;
+     }else{
+         var aaa=false;
+         var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange=function () {
+             if (xhr.readyState==4&&xhr.status==200){
+              if (xhr.responseText=='yes'){
+                  span_name.innerHTML="<font color='red'>图书标题已存在 </font>"
+              }  else {
+                  span_name.innerHTML="<font color='green'>😀√😀</font>"
+              }
+
+             }
+         }
+         xhr.open('get','/index.php/index/Index/ajax?b_name='+b_name,false );
+         xhr.send(null);
+         return sign;
+     }
+    }
+
+
+
+
+</script>

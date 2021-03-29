@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Form Validation</title>
+
+  <link href="/style/admin/css/style.css" rel="stylesheet">
+  <link href="/style/admin/css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="/style/admin/css/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <?php  include('./application/admin/view/public/left.html')?>
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <?php  include('./application/admin/view/public/top.html')?>
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                       博文类添加
+                        </header>
+                        <div class="panel-body">
+                            <div class=" form">
+                                <form class="cmxform form-horizontal adminex-form"  method="post" action="/index.php/admin/Cate/save">
+                                    <div class="form-group ">
+                                        <label for="cname" class="control-label col-lg-2">博文类内容</label>
+                                        <div class="col-lg-10">
+                                            <input class=" form-control" id="cname" name="c_type" minlength="2" type="text" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="cname" class="control-label col-lg-2">博文分类添加人</label>
+                                        <div class="col-lg-10">
+
+                                            <input class=" form-control" id="cname" name="c_man" minlength="2" type="text" required   value="<?php echo $arr  ?>" readonly / >
+
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button class="btn btn-primary" type="submit">添加</button>
+                                            <button class="btn btn-default" type="reset">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="/style/admin/js/jquery-1.10.2.min.js"></script>
+<script src="/style/admin/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/style/admin/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/style/admin/js/bootstrap.min.js"></script>
+<script src="/style/admin/js/modernizr.min.js"></script>
+<script src="/style/admin/js/jquery.nicescroll.js"></script>
+
+<script type="text/javascript" src="/style/admin/js/jquery.validate.min.js"></script>
+<script src="/style/admin/js/validation-init.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/style/admin/js/scripts.js"></script>
+
+</body>
+</html>

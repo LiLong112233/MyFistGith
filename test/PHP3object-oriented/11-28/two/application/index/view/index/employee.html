@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/save" method="post">
+    <table border="1">
+        <tr>
+            <td>员工姓名</td>
+            <td><input type="text" name="name" id=""></td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>
+                <input type="radio" name="sex" id="" value="男" checked>男
+                <input type="radio" name="sex" id="" value="女">女
+            </td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td>
+                <select name="age" id="">
+                <?php for ( $i=18;$i<=60;$i++ ){  ?>
+                    <option value="<?php echo $i ?>"> <?php echo $i ?> </option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>部门</td>
+            <td>
+                <select name="w_id" id="">
+                    <?php foreach( $arr as $k =>$v ){ ?>
+                    <option value="<?php echo $v['w_id'] ?>"><?php echo $v['w_type'] ?></option>
+                    <?php } ?>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="添加"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.php/index/Index/save" method="post" enctype="multipart/form-data" onsubmit="return check_submit()">
+    <table border="1">
+        <tr>
+            <td>参加节目名称</td>
+            <td><input type="text" name="p_name" id="p_name" onblur="check_name()">
+            <span id="span_name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>节目封面</td>
+            <td>
+                <input type="file" name="p_img" id="">
+            </td>
+        </tr>
+        <tr>
+            <td>节目类型</td>
+            <td>
+                <select name="t_id" id="">
+                    <?php foreach($arr as $k => $v ){ ?>
+                    <option value="<?php echo $v['t_id'] ?>"><?php echo $v['p_type'] ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>节目参与人员</td>
+            <td><textarea name="p_man" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td>考核状态</td>
+            <td>
+                <input type="radio" name="p_status" id="" value="1" checked>待审核
+                <input type="radio" name="p_status" id="" value="2">审核中
+                <input type="radio" name="p_status" id="" value="3">未通过
+                <input type="radio" name="p_status" id="" value="4">已通过
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="增加"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    function check_name() {
+        var p_name = document.getElementById('p_name').value;
+        var span_name=document.getElementById('span_name');
+        var res=/^[a-zA-Z0-9\u4e00-\u9fa5]{2.10}$/;
+        if (p_name==''){
+            span_name.innerHTML="<font color='red'>电影标题不能为空</font>"
+            return false;
+        }else if (res.test(p_name)) {
+            span_name.innerHTML="<font color='red'>电影标题须为2-10位汉字字母数字组成</font>"
+            return false;
+        }else{
+        var aaa=false;
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function () {
+            if (xhr.status==200&&xhr.readyState==4){
+                if (xhr.responseText=='yes') {
+                    span_name.innerHTML="<font color='red'>电影标题已存在</font>";
+                    return false;
+                }else{
+                    span_name.innerHTML="<font color='green'>√</font>";
+                    return true;
+                }
+            }
+        }
+          xhr.open('get','/index.php/index/Index/ajax?p_name='+p_name ,false);
+          xhr.send(null);
+          return aaa;
+        }
+    }
+</script>

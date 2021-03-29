@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="\index.php\index\Index\save" method="post" enctype="multipart/form-data" onsubmit="return check_submit()">
+<table border="1">
+    <tr>
+        <td>图书名称</td>
+        <td><input type="text" name="b_name" id="b_name" onblur="check_name()">
+            <span id="span_name"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>作者</td>
+        <td>
+            <input type="text" name="b_man" id="b_man" value="<?php echo $b_man;?>" readonly>
+        </td>
+    </tr>
+    <tr>
+        <td>所属分类</td>
+        <td>
+            <select name="t_id" id="">
+                <?php foreach($arr as $k=>$v){?>
+                <option value="<?php echo $v['t_id']?>"><?php echo $v['t_name']?></option>
+                <?php }?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>封面</td>
+        <td>
+            <input type="file" name="b_img" id="">
+        </td>
+    </tr>
+    <tr>
+        <td>内容</td>
+        <td>
+            <textarea name="b_content" id="" cols="30" rows="10"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="发布"></td>
+    </tr>
+    
+</table>
+</form>
+</body>
+</html>
+<script>
+    function check_name() {
+        var b_name = document.getElementById('b_name').value;
+        var span_name = document.getElementById('span_name');
+        var reg_name = /^[\u4e00-\u9fa5]{2,10}$/;
+        if (b_name ==''){
+            span_name.innerHTML="<font color='red'>图书标题必填</font>";
+            return false;
+        } else if(reg_name.test(b_name) == false){
+            span_name.innerHTML="<font color='red'>图书标题必须字母汉字组成且2-10位</font>";
+            return false;
+        }else{
+            // span_name.innerHTML="<font color='green'>√</font>";
+            var sign = false;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+               if (xhr.status==200 && xhr.readyState==4){
+                   // console.log(xhr.responseText);
+                   if (xhr.responseText =='yes'){
+                       span_name.innerHTML="<font color='red'>图书标题已存在</font>";
+                       sign = false;
+                   } else{
+                       span_name.innerHTML="<font color='green'>√</font>";
+                       sign = true;
+                   }
+               }
+            };
+            xhr.open('get','/index.php/index/Index/check_name?b_name='+b_name,false);
+            xhr.send(null);
+            return sign;
+        }
+    }
+
+    function check_submit() {
+        if (check_name()){
+            return true;
+        } else{
+            return false;
+        }
+    }
+</script>

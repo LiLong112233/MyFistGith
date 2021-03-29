@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="\index.php\index\Index\gameList" method="get">
+    <input type="text" name="g_name" placeholder="游戏名称">
+    <input type="text" name="g_price" placeholder="游戏价格">
+    <input type="submit" value="搜索">
+</form>
+<table border="1">
+    <tr>
+        <td>游戏ID</td>
+        <td>游戏名称</td>
+        <td>游戏价格</td>
+        <td>游戏介绍</td>
+        <td>游戏品牌</td>
+        <td>游戏图片</td>
+        <td>操作</td>
+    </tr>
+    <?php foreach($res as $k=>$v){?>
+    <tr>
+        <td><?php echo $v['g_id']?></td>
+        <td><?php echo $v['g_name']?></td>
+        <td><?php echo $v['g_price']?></td>
+        <td><?php echo $v['g_desc']?></td>
+        <td><?php echo $v['b_name']?></td>
+        <td><img src="<?php echo '/'.$v['g_img']?>" height="80" width="50" alt=""></td>
+        <td>
+            <a href="delete?g_id=<?php echo $v['g_id']?>">删除</a>
+            <a href="edit?g_id=<?php echo $v['g_id']?>">修改</a>
+        </td>
+    </tr>
+    <?php }?>
+</table>
+<?php echo $str ?>
+</body>
+</html>

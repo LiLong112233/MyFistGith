@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="\index.php\index\Index\save" method="post" enctype="multipart/form-data">
+<table border="1">
+    <tr>
+        <td>游戏名称</td>
+        <td><input type="text" name="g_name"></td>
+    </tr>
+    <tr>
+        <td>游戏价格</td>
+        <td><input type="text" name="g_price"></td>
+    </tr>
+    <tr>
+        <td>游戏介绍</td>
+        <td><textarea name="g_desc" id="" cols="30" rows="10" ></textarea></td>
+    </tr>
+    <tr>
+        <td>品牌</td>
+        <td>
+            <select name="b_id" id="">
+                <?php foreach($res as $k=>$v){ ?>
+                <option value="<?php echo $v['b_id']?>"><?php echo $v['b_name']?></option>
+                <?php }?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>游戏图片</td>
+        <td><input type="file" name="g_img" id=""></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="提交"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
