@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object 对象</title>
+</head>
+<body>
+
+</body>
+<script>
+    // object.getPrototypeOf     返回参数对象的原形
+    var F =function () {}
+    var f = new F()
+    Object.getPrototypeOf(f)=== F.prototype //true
+//     object.setPrototypeOf()    为参数设置原形，返回该参数的对象
+     var a={}
+    var b= {x:1}
+    Object.setPrototypeOf(a,b)
+    Object.getPrototypeOf(a)===b // true
+    a.x //1
+//
+
+
+
+
+
+</script>
+</html>

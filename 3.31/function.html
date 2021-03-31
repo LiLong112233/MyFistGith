@@ -26,9 +26,30 @@
             return num
         }
     }
-   var a=100
-    var b=200
-    var res = Cacl.add(a,b)
+   var a=parseInt(prompt("第一位："))
+    var yunshuan=prompt("运算符号： ")
+    var b=parseInt(prompt("第二位 ："))
+    var  fuhao=0
+    switch (yunshuan) {
+         case "+":
+         fuhao = 'add'
+             break;
+         case "-":
+             fuhao='minus'
+             break;
+         case "*":
+             fuhao='multi'
+               break;
+          case "/":
+              fuhao='divi'
+               break;
+            default:
+              alert("您输入的运算符号有误")
+    }
+    console.log(fuhao)
+
+
+    var res = Cacl.fuhao(a,b)
     console.log(res )
 
 
