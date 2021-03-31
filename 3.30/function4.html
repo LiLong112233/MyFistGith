@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声明；传参；属性；闭包；自定义对象</title>
+</head>
+<body>
+
+</body>
+<script>
+    /***声明***/
+    //关键字
+    function aaa() {
+
+    }
+    //       调用
+    aaa()
+    // 匿名函数
+    var fun1 =function () {
+
+    }
+    //调用
+    fun1()
+//    function 构造函数
+    var fun2 =new Function('x','y','return x+y')
+    var  numm=fun2(1,3)
+    console.log(numm) //4
+  // 函数声明提升
+    fun3()
+     function fun3() {
+       console.log(111)
+     }
+     //后声明的函数会覆盖先声明的函数
+     function fun3() {
+         console.log(2222)
+     }
+/**********   函数传参          *****************/
+//  形参 ： 函数声明时的参数
+// 实参 ： 函数调用时的参数
+ function a(a,b) {  //a，b 为形参
+  console.log(a+b)
+    }
+ a(4,6)//4，6 为实参
+// 值传递
+ function bb(num) {
+   num++
+ }
+var b =123
+bb(b)
+console.log(b) //123
+// 引用传递
+  function ccc(num) {
+ num[0]++
+  }
+   var c=[11,22]
+    ccc(c)
+   console.log(c) // 11,22
+// arguments 是什么
+function ddd() {
+ console.log(arguments)
+}
+ddd(1,2,3,3,4)
+
+
+ /****** ，，自定义属性  * * ********/
+   var obj ={
+       name:"zhangsan",
+       age:22,
+     email:"sdfas@qq.com"
+ }
+ Object.defineProperty(obj,"sex",{
+     value:"boy",
+     configurable:false ,
+     writable:false,
+     enumerable:false
+ })
+    console.log(obj)
+
+
+
+</script>
+</html>
