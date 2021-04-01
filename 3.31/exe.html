@@ -17,16 +17,19 @@
     }
     Cat.prototype=new Animal()
     Cat.prototype.appearance =" 喵 "
+    var p1 = new Cat()
+     console.log(p1)
+
+
+
     function Tiger() {
 
     }
     Tiger.prototype=new Cat()
     Tiger.prototype.kill= " 快准狠 "
 
-
-    var animal = new Cat()
     var tiger = new Tiger()
-    console.log(animal)
+
     console.log(tiger)
 
 

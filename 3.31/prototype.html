@@ -8,11 +8,13 @@
 
 </body>
 <script>
-    function Anum() {
-
+    function Anum (name,age ) {
+      this.name=name
+      this.age =age
     }
-    Anum.prototype.age =11
-     console.log(Anum())
+     var p1 =new Anum("zhangsan",22)
+     var p2 =new Anum("lisi",18)
+     console.log(p1,p2)
 
 
 </script>
