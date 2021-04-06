@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Person{
+        constructor(name,age) {
+        this.name =name
+         this.age =age
+        }
+       static  number =10
+
+       static say(){
+            console.log("你好世界")
+       }
+
+       eat (){
+            console.log(this.name,this.age)
+       }
+    }
+    class Abc extends Person{
+        constructor(name,age) {
+            super();
+        }
+    }
+   // Person.say()
+   // console.log(Person.number )
+   //    let p1 = new    Person(11,22)
+   //  p1.eat()
+
+  let p2 = new Abc("张三",11)
+    console.log(p2)
+    Abc.say()
+    p2.eat()
+
+</script>
+</html>

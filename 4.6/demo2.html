@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //属性简写
+    let name = "张三"
+     let age =11
+    let say =()=>{return "hello  word"}
+     let obj1 = {name,age,say}
+     console.log(obj1.say())
+     //方法简写
+     let obj0={
+        say:function f() {
+        console.log(5555555555)
+    }
+    ,
+     sayy(){
+       console.log(22222)
+     }
+     }
+     obj0.say()
+    obj0.sayy()
+    //属性表达式
+    obj3= {
+        ['a' + 'b'](){
+          console.log(124)
+        }
+    }
+    obj3.ab()
+//    扩展符
+    let peraon ={
+        name:"zhangsan",
+        age:11,
+        sex:"MAN"
+    }
+   console.log(peraon)
+   let p1={...peraon}
+     console.log(p1)
+    p1 ={p1,...'hello'}
+     console.log(p1)
+// get方法  与  set 方法
+let obj5= {
+        name:"张三",
+       age:11,
+    get name(){
+         console.log("正在读取name属性")
+    },
+    set name(v){
+            console.log("新值为： ",v)
+    }
+
+
+    }
+    obj5.name
+    obj5.name="list "
+
+
+
+
+
+
+
+</script>
+</html>

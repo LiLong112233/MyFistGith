@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+function fun(n,o) {
+ console.log(o)
+    return{
+     fun:function(m) {
+         return fun(m,n)
+     }
+    }
+}
+var a =fun(0);
+a.fun(1) ;
+a.fun(2);
+a.fun(3)
+
+    function  ass()  {
+    console.log(ss)
+        var ss =000
+    }
+    ass()
+
+    function  Foo() {
+    console.log(a)
+    var a ="hello"
+    console.log(a)
+    }
+    Foo()
+
+
+   function createCar(color,wheel) {
+    var obj =new Object;
+     obj.color= color
+       obj.wheel=wheel
+       return obj ;
+   }
+  var cat1 = createCar("红色","4")
+  console.log(cat1.color);
+
+  var num=1
+    function func() {
+   var num =2
+     return num
+    }
+    console.log(func())
+
+    function c() {
+      var user ="21"
+   console.log(this.user)
+        console.log(this)
+    }
+    c()
+say ()
+    function say() {
+    console.log("hiloo")
+    }
+    var b;
+    function fuu() {
+    b ="Aaaaa"
+    }
+console.log(b)
+    fuu()
+    console.log(b)
+
+
+    function frr() {}
+    var f1 =new frr()
+    console.log(f1 instanceof frr)
+
+    a=1
+    var a
+    console.log(a)
+
+
+</script>
+</html>
