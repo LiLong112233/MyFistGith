@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1> 距离2021高考还有：</h1>
+  <h3 >   </h3>
+</body>
+<script>
+    setInterval(function () {
+        //获取当前时间
+        let now = new Date().getTime();
+        let date = new Date(2021,5,7,8,0,0)//截止日期
+        let end =date.getTime()
+        //倒计时日期
+         last_time = end-now
+        console.log(last_time)
+     let day=parseInt(last_time/(1000*60*60*24))
+        console.log(day)
+     let hours=parseInt(last_time%(1000*60*60*24)/(1000*60*60))
+        console.log(hours)
+        let minute=parseInt(last_time%(1000*60*60*24)%(1000*60*60)/(1000*60))
+        console.log(minute)
+        let second=parseInt(last_time%(1000*60*60*24)%(1000*60*60)%(1000*60)/(1000))
+        console.log(second)
+      let h3 =document.querySelector("h3")
+        h3.innerText= day+'天'+hours +'时'+minute+'分'+second+'秒'
+
+
+
+    },1000)
+
+
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.js"></script>
+</head>
+<body>
+   A <input type="checkbox" name=""  class="check" id="">
+   B <input type="checkbox" name=""  class="check" id="">
+   C <input type="checkbox" name=""  class="check" id="">
+   D <input type="checkbox" name=""  class="check" id="">
+   <input type="button" value="全选" class="all">
+   <input type="button" value="全不选" class="allno">
+</body>
+<script>
+    $('.all').click(
+        function () {
+            $('.check').prop('checked', true)
+        })
+    $('.allno').click(
+        function () {
+            $('.check').prop('checked', false)
+        })
+
+
+
+
+
+
+</script>
+
+
+
+</html>
