@@ -31,7 +31,7 @@
 
 
 
-    function agax( way='get',url) {
+    function agax(obj) {
         //实例化 XHR
         let xhr =new XMLHttpRequest()
         //监听 状态
@@ -54,7 +54,18 @@
         xhr.send()
 
     }
-         let  aa=agax( 'get', 'http://127.0.0.1/4.7/hello.php')
+    let obj ={
+        url:"",    //请求地址
+        method:"",  // 提交方式 get  or  post
+        data:{},   //发送的数据
+        dateType:"", //json
+        success:function () {}, //请求成功 回调函数
+        error:function () { }  //失败处理函数
+    }
+
+
+
+         let  aa=agax( 'obj')
            console.log(aa)
 
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  const p1 ={
+      name:"李四",
+      age :22
+  }
+  Object.defineProperty(p1,"name",{
+      get() {
+          return "xxx"
+      },
+      set(v){
+          console.log("新值",v)
+      }
+  })
+  console.log(p1.name)
+  p1.name="王五"
+
+ console.log(p1)
+
+</script>
+</html>

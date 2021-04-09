@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let obj={
+        age:11,
+        sex:"man"
+
+    };
+    obj = new Proxy(obj,{
+    defineProperty(target, p, attributes) {
+    console.log(target)
+        console.log(p)
+        console.log(attributes)
+        return   target,p,attributes;
+    },
+     deleteProperty(target, p) {
+     console.log(target)
+     console.log(p)
+         return ` ！！！！！ 您无权限删除  ！！！！！！`;
+    }
+
+
+    })
+     Object.defineProperty(obj,"name",{
+         value:"Aaa",
+     })
+     console.log(obj)
+   if (delete obj.age){
+       alert(" ！！！！！ 您无权限删除  ！！！！！")
+   }
+    console.log(obj)
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.js"> </script>
+</head>
+<body>
+</body>
+<script>
+
+    function aaa() {
+         pwd= []
+        $.ajax({
+            url:"http://vue.api.comcto.com/api/password1.php",
+            method:"get",
+            async:false,
+            dateType: "",
+            success:function (a) {
+                console.log("第一位",a)
+                 pwd.push(a)
+            }
+        })
+
+        $.ajax({
+            url:"http://vue.api.comcto.com/api/password2.php",
+            method:"get",
+            async:false,
+            dateType: "",
+            success:function (a) {
+                console.log("第二位",a)
+                pwd.push(a)
+            }
+        })
+
+        $.ajax({
+            url:"http://vue.api.comcto.com/api/password3.php",
+            method:"get",
+            async:false,
+            dateType: "",
+            success:function (a) {
+                console.log("第三位",a)
+                pwd.push(a)
+
+            }
+        })
+
+        $.ajax({
+            url:"http://vue.api.comcto.com/api/password4.php",
+            method:"get",
+            async:false,
+            dateType: "",
+            success:function (a) {
+                console.log("第四位",a)
+                pwd.push(a)
+            }
+        })
+        function ff() {
+          return pwd
+        }
+
+
+
+     return ff()
+    }
+     var aaa = aaa()
+    var pp =""
+    for (let i=0;i<aaa.length;i++){
+        pp=pp+aaa[i]+'-'
+    }
+     pp.trim('-')
+ console.log(pp)
+
+
+    console.log(aaa)
+
+
+
+</script>
+</html>

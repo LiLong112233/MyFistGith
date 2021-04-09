@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let person1={
+        name:"张三",
+        age:22
+    }
+    person1.email="zhangsan@qq.com"
+    Object.defineProperty(person1,"sex",{
+        value: "man",
+        configurable :false, //是否可被delete删除
+        writable:true , //是否可被重写
+        enumerable:true//是否可被枚举
+    })
+   delete person1.sex
+ console.log(person1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = ['a', 'b', 'c'];
+    let iter = arr[Symbol.iterator]();
+    console.log(iter)
+    console.log(iter.next())
+
+
+
+
+    class RangeIterator {
+        constructor(start, stop) {
+            this.value = start;
+            this.stop = stop;
+        }
+        [Symbol.iterator]() { return this; }
+        next() {
+            var value = this.value;
+            if (value < this.stop) {
+                this.value++;
+                return {done: false, value: value};
+            }
+            return {done: true, value: undefined};
+        }
+    }
+    function range(start, stop) {
+        return new RangeIterator(start, stop);
+    }
+    for (var value of range(0, 3)) {
+        console.log(value); // 0, 1, 2
+    }
+     new RangeIterator()
+</script>
+</html>
