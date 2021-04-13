@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <script src="../axios.min.js"></script>
+</head>
+<body>
+<div id="add">
+    用户名 ： <input type="text" v-model="name">  <span> {{hint}}</span>
+</div>
+
+</body>
+<script>
+  new Vue({
+   el:"#add",
+    data:{
+       name:'',
+       hint:''
+      },
+   methods:{
+
+   },
+   watch:{
+     name:function (ne ,ol) {
+         var new_the=this
+         if (new_the.name==''){
+             new_the.hint="用户名不能为空"
+         }else{
+             new_the.hint="正在输入"
+             axios.get(' http://vue.api.comcto.com/api/checkname.php?name='+new_the.name).then(
+                 function (response) {
+                     // console.log(response)
+                     console.log(response.data.msg)
+                     new_the.hint=response.data.msg
+                 }
+             )
+         }
+         console.log(new_the.name )
+     }
+
+
+
+   }
+  })
+</script>
+</html>

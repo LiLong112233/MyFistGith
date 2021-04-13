@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <style>
+         .add{
+             color: red;
+         }
+    </style>
+</head>
+<body>
+ <div id="counter">
+
+     Counter :{{counter| hello}}
+ </div>
+<p v-bind:class="class2"  id="aa" > hello</p>
+</body>
+<script>
+   var a = new Vue({
+       el:"#counter",
+       data:{
+          counter: 'nihao'
+       },
+       // 过滤器
+       filters:{
+            hello(){
+
+            }
+       }
+   })
+    var b = new Vue({
+        el:"#aa",
+        data :{
+            class2:{
+                add:true
+            }
+
+        }
+    })
+
+
+</script>
+</html>
