@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+      <p>
+          <router-link to="/ok"> go to  the ok </router-link> \\\\
+          <router-link to="/no"> go to  the no </router-link>
+      </p>
+      <router-view></router-view>
+  </div>
+</body>
+<script src="../vue.js"> </script>
+<script src="../vue-router.js"> </script>
+<script>
+    const ok ={template:"<h1> OK </h1>"}
+    const no ={template: "<h1>No</h1>"}
+    const routes =[
+        {path:'/ok',component:ok},
+        {path: '/no',component:no}
+    ]
+   const router =new VueRouter({
+       routes
+   })
+   new Vue ({
+       el:'#app',
+       router:router
+   })
+</script>
+</html>
+
+
+

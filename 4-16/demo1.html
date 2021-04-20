@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>hello  API</h1>
+    <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        //
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+</body>
+<script src="../vue.js"></script>
+<script src="../vue-router.js"></script>
+<script>
+    const Foo={template:'<h1>Foo</h1>'}
+    const Bar={template: '<h1>Bar</h1>'}
+    const routes=[
+        {path:'/foo',component:Foo},
+        {path:'/bar',component: Bar }
+    ]
+    //创建 router 实例
+    const router =new VueRouter({
+        routes
+    })
+     new Vue({
+        el:"#app",
+        router:router
+    })
+
+
+
+
+
+
+</script>
+</html>

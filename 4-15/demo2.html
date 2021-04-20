@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="add">
+<user-list v-bind:list="users"></user-list>
+</div>
+</body>
+<script src="../vue.js"></script>
+<script src="../axios.min.js"></script>
+<script>
+    Vue.component('user-list',{
+        props:['list'],
+        template:`<ul> <li v-for='item in list' >编号：{{item.user_id}}  - 姓名:{{item.user_name}} </li> </ul>`
+    })
+   new Vue({
+       el:"#add",
+       data:({
+           users:[{}]
+       }),
+      created(){
+           var set_the = this
+   axios.get('http://localhost:8080/users').then(function (response) {
+       console.log(response)
+        set_the.users=response.data
+   })
+      }
+   })
+</script>
+</html>

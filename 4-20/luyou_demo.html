@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/user/zhangsan">张三</router-link>
+        <router-link to="/user/lisi">李四</router-link>
+        <router-link :to="{name:'userx',params:{id:123}}">王五</router-link>
+    </p>
+
+   <router-view></router-view>
+</div>
+</body>
+<script>
+    const Userzs={
+        template:` <div> 张三的个人主页 <br>
+            <router-link to="/user/zhangsan/zs_sun1">张三的大儿子 </router-link>
+            <router-link to="/user/zhangsan/zs_sun2">张三的二儿子 </router-link>
+            <router-view></router-view>
+          <button @click="gooo">返回上一个人的主页</button>  </div>  `,
+      methods: {
+           gooo(){
+               this.$router.go(-1)
+           }
+      }
+    }
+    const zs_sun1={
+        template:`<div> <h2>张三的大儿子张强 </h2>    </div>`
+    }
+    const zs_sun2={
+        template:`<div>  <h2>张三的二儿子张勇  </h2> </div>`
+    }
+
+    const Userls={
+        template:` <div >
+             <h3>
+                 李四的主页
+             </h3>
+         <button @click="goto">去张三主页</button>
+   </div>     `,
+        methods:{
+        goto(){
+            this.$router.push({path:'/user/zhangsan',params:{aaa:'传参'}} )
+        }
+        }
+    }
+    const Userww={
+        props:['id'],
+        template:` <div> 王五的个人主页  {{id}}</div>      `
+    }
+    const routes=[
+        {path:"/user/zhangsan",component:Userzs,
+        children:[
+            {path:"/user/zhangsan/zs_sun1",component:zs_sun1},
+            {path:"/user/zhangsan/zs_sun2",component:zs_sun2}
+        ]
+        },
+        {path:"/user/lisi",component:Userls},
+        {name:"userx",path:"/user/:id",component:Userww,props:route=>({id:route.params.id})},
+    ]
+    const router =new VueRouter({
+        routes:routes
+    })
+    new Vue({
+        el:"#app",
+        router:router
+    })
+
+
+
+
+</script>
+</html>

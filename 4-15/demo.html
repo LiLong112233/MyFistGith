@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <blog-post  v-bind:posttitle="posttitle22" title=""></blog-post>
+</div>
+</body>
+<script>
+    Vue.component('blog-post',{
+    //  在javascript 中是cameCase 的
+    props:['posttitle'],
+  template:"<h3>{{posttitle}}</h3>"
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            posttitle22:"Hello woeld 1111"
+        }
+    })
+
+
+</script>
+</html>

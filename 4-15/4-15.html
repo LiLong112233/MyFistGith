@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="acd">
+    <button-counter></button-counter>
+</div>
+</body>
+<script>
+    // Vue.component('组件名',{
+    //      data:'组件数据',
+    //     template:'组件模板',
+    //     methods:'组件方法'
+    // })
+    //     Vue.component('button-counter',{
+    //         data:function () {
+    //            return{
+    //                count:11
+    //            }
+    //         },
+    //         template:'<button v-on:click="add" > {{count}}  </button>',
+    //         methods:{add() {
+    //             alert('aaa')
+    //             this.count++
+    //                 console.log(this.count)
+    //         }}
+    //     })
+    //     new Vue({
+    //         el:'#acd'
+    //     })
+    //
+    Vue.component('button-counter',{
+        data:function(){
+            return{
+                counter:123
+            }
+        },
+        // template:"<button v-bind:title='counter'> {{counter}} <tton>"
+        template:"<button v-on:click='add'> {{counter}} </button>",
+        methods:{
+            add(){
+                this.counter++
+            }
+        }
+    })
+    new Vue({
+        el:"#acd",
+        methods:{
+
+        }
+    })
+
+
+
+
+</script>
+</html>
